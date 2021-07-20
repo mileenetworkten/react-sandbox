@@ -21,8 +21,10 @@ export default class InputForm extends React.Component<Props, State> {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    this.setState({ value: event.target.value });
+  async handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    console.log({ b4value: this.state.value });
+    await this.setState({ value: event.target.value });
+    console.log({ afvalue: this.state.value });
     apiCall(event.target.value);
   }
 
