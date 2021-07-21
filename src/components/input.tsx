@@ -13,6 +13,8 @@ function apiCall(input: string) {
 }
 
 export default class InputForm extends React.Component<Props, State> {
+  queue = [];
+
   constructor(props: Props) {
     super(props);
     this.state = { value: '' };
@@ -21,9 +23,22 @@ export default class InputForm extends React.Component<Props, State> {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  processQueue = () => {
+    for (let i = 0; i < this.queue.length; ++i) {
+      //
+    }
+  };
+
+  setCallback = (x) => {
+    this.queue.push(x);
+    this.processQueue();
+  };
+
   async handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     console.log({ b4value: this.state.value });
-    await this.setState({ value: event.target.value });
+    this.setState({ value: event.target.value });
+    await this.setCallback({ value: event.target.value });
+    // await this.setState({ value: event.target.value });
     console.log({ afvalue: this.state.value });
     apiCall(event.target.value);
   }
