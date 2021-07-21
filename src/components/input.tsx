@@ -22,12 +22,13 @@ export default class InputForm extends React.Component<Props, State> {
   }
 
   async handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    let time = Date.now();
     console.log({ b4value: this.state.value });
 
     this.setState({ value: event.target.value });
     await (() => {})();
 
-    console.log({ afvalue: this.state.value });
+    console.log({ afvalue: this.state.value, timeTaken: Date.now() - time });
     apiCall(event.target.value);
   }
 
