@@ -15,3 +15,9 @@ See below for macos:
 # modify this in your package.json and make start script use the environment setting below
 TSC_COMPILE_ON_ERROR=true && react-scripts start
 ```
+
+in node projects use
+
+```
+tsc-watch --onCompilationComplete
+```
